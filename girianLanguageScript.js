@@ -66,7 +66,8 @@ function removeConsecutiveDuplicates(input) {
                 return input[0] + removeConsecutiveDuplicates(input.substring(1));
 }
 function format(text = "") {
-    var returnText = text
+    var returnText = text + " "
+    returnText = returnText.replaceAll("\n", " ")
     returnText = returnText.replaceAll("? ", ". ").replaceAll("! ", ". ")
     returnText = returnText.replaceAll(". ", " | ").replaceAll(", ", " || ").replaceAll("\n", " ").replaceAll("	", "")
     return returnText
@@ -131,7 +132,10 @@ function GETOLF(theText = "", varient="informal", type="m", simplified = true) {
     returnData = returnData.split(' ')
     for (var i = 0; i < returnData.length; i++) {
         if ((returnData[i] !== "|") && (returnData[i] !== "||") && (!returnData[i].includes("0") && !returnData[i].includes("1") && !returnData[i].includes("2") && !returnData[i].includes("3") && !returnData[i].includes("4") && !returnData[i].includes("5") && !returnData[i].includes("6") && !returnData[i].includes("7") && !returnData[i].includes("8") && !returnData[i].includes("9") && !(returnData[i][0] == "."))) {
-            if (varient === -1) {
+            if (returnData[i] === "") {
+                break;
+            }
+            else if (varient === -1) {
                 returnData[i] = GETOL(GETOL(GETOL(returnData[i], type), type), type)
             }
             else if (returnData[i].length >= varient) {
@@ -215,7 +219,6 @@ function GETOLF(theText = "", varient="informal", type="m", simplified = true) {
     returnData = returnData.join().replaceAll(",", " ").replaceAll(" || ", ", ").replaceAll(" |", "| ").replaceAll("  ", " ").replaceAll("  ", " ")
     if (varient > 100) {
         returnData = removeConsecutiveDuplicates(returnData)
-        
     }
     return [returnData, theText]
 }
@@ -228,5 +231,4 @@ translate(translateText, varient.southern)
 translate(translateText, varient.eastern)
 translate(translateText, varient.western)
 translate(translateText, varient.old)*/
-translate("Hi!")
-translate("this is an example of something. this is another example! ")
+translate("your text goes in here.")
