@@ -229,4 +229,4 @@ translate(translateText, varient.eastern)
 translate(translateText, varient.western)
 translate(translateText, varient.old)*/
 translate("Hi!")
-translate("this is an example of something. this is another example")
+translate("this is an example of something. this is another example! ")
