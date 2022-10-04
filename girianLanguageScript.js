@@ -228,4 +228,4 @@ translate(translateText, varient.southern)
 translate(translateText, varient.eastern)
 translate(translateText, varient.western)
 translate(translateText, varient.old)*/
-translate("hello")
+translate("Hi!")
