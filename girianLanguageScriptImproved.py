@@ -14,11 +14,29 @@ def remove_duplicates(text = ""):
         return remove_duplicates(text[1:])
     else:
         return text[0] + remove_duplicates(text[1:])
-def convert(text = "", type = "m"):
-    returnText = text.lower()
-    returnText = returnText.split("").reverse()
-    returnText = "".join(returnText)
+def convert(text = "", type = "m"): # AKA GETOL
+    returnText = text.lower()[::-1]  # lowercase, reverse
+    minusOne, minusTwo, minusThree, minusFive = ""
+    try:
+        minusOne = returnText[len(returnText) - 1]
+    except:
+        minusOne = ""
+    try:
+        minusTwo = returnText[len(returnText) - 2]
+    except:
+        minusTwo = ""
+    try:
+        minusThree = returnText[len(returnText) - 3]
+    except:
+        minusThree = ""
+    try:
+        minusFive = returnText[len(returnText) - 5]
+    except:
+        minusFive = ""
     print(returnText)
-print(convert("jo"))
-def girian(text = "", varient = "informal", type = "m", simplified = "true"):
+    if type == "m":
+        returnText = f"{minusOne}e{minusFive}{minusOne}a{returnText}am"
+convert("hejekele")
+print("dlkjf"[10] == False)
+def girian(text = "", varient = "informal", type = "m", simplified = "true"): # AKA GETOLF
     print("JD")
