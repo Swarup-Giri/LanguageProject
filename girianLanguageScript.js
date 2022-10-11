@@ -44,6 +44,7 @@ function replace(value = "") {
             value = value.replaceAll("nu", "ny").replaceAll("nu", "ny")
             value = value.replaceAll("un", "yn").replaceAll("un", "yn")
             value = value.replaceAll("e ", "é ").replaceAll("e || ", "é || ").replaceAll("e | ", "é | ")
+            value = value.replaceAll("'", "")
             return value
 }
 const varient = {
@@ -222,7 +223,7 @@ function GETOLF(theText = "", varient="informal", type="m", simplified = true) {
     }
     return [returnData, theText]
 }
-/*var translateText = `hello, this is an example of girian text in this specific varient .END`
+var translateText = `hello, this is an example of girian text in this specific varient .END`
 translate(translateText, varient.normal)
 translate(translateText, varient.informal)
 translate(translateText, varient.formal)
@@ -230,5 +231,4 @@ translate(translateText, varient.northern)
 translate(translateText, varient.southern)
 translate(translateText, varient.eastern)
 translate(translateText, varient.western)
-translate(translateText, varient.old)*/
-translate("your text goes here.")
+translate(translateText, varient.old)
