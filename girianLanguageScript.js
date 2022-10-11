@@ -231,4 +231,4 @@ translate(translateText, varient.southern)
 translate(translateText, varient.eastern)
 translate(translateText, varient.western)
 translate(translateText, varient.old)*/
-translate("your text goes here.")
+translate("your text goes here. 1.2328 one point two three two eight")
