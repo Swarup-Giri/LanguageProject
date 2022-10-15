@@ -13,6 +13,8 @@ def replace(value = ""):
     value = value.replace("aa", "a").replace("aa", "a").replace("aa", "a").replace("aa", "a")
     value = value.replace("oo", "o").replace("oo", "o").replace("oo", "o").replace("oo", "o")
     value = value.replace("uu", "u").replace("uu", "u").replace("uu", "u").replace("uu", "u")
+    value = value.replace("sh", "s").replace("uk", "u").replace("nt", "t").replace("tch", "ts")
+    value = value.replace("a", "e").replace("e", "i").replace("i", "o").replace("o", "u").replace("u", "a")
     value = value.replace("ac", "as").replace("ca", "sa")
     value = value.replace("ic", "is").replace("ci", "ce")
     value = value.replace("uc", "ic").replace("cu", "su")
@@ -46,6 +48,9 @@ def format(text = ""):
     return returnText
 def translate (text = "", varient = "informal", simplified = True, type = "m"):
     text = format(text)
+    text = text.lower()
+    text = text.replace("—", "").replace("–", "").replace("-", "").replace("\"", "").replace("\'", "").replace("\'", "").replace("“", "").replace("”", "")
+    
     if (type != "m") & (type != "f"):
         type = "m"
     text = text.replace("\n", " ").replace("	", " ")
@@ -121,6 +126,7 @@ def GETOLF(text = "", varient = "informal", type = "m", simlified = True):
             returnData[i] = returnData[i].replace(".", "\"")
             returnData[i]  = returnData[i] + "\""
         elif varient > 100:
+            returnData[i] = "".join(returnData[i])
             returnData[i] = replace(returnData[i])
             if returnData[i][len(returnData[i]) - 1] == "n":
                 returnData[i] = list(returnData[i])
