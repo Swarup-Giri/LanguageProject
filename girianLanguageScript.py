@@ -5,7 +5,7 @@ def help():
     print("Girian Language Script v1.4 \n To use this, simply... UPDATE SOON")
 def replace(value = ""):
     value = value.replace("", "")
-    value = value.replace("kc", "k").replace("ck", "k")
+    value = value.replace("qc", "k").replace("cq", "k")
     value = value.replace("wh", "w").replace("hw", "h")
     value = value.replace("q", "k").replace("x", "k")
     value = value.replace("ae", "a").replace("oe", "o").replace("ea", "e").replace("eo", "e").replace("ao", "a").replace("oa", "o")
@@ -13,7 +13,7 @@ def replace(value = ""):
     value = value.replace("aa", "a").replace("aa", "a").replace("aa", "a").replace("aa", "a")
     value = value.replace("oo", "o").replace("oo", "o").replace("oo", "o").replace("oo", "o")
     value = value.replace("uu", "u").replace("uu", "u").replace("uu", "u").replace("uu", "u")
-    value = value.replace("sh", "s").replace("uk", "u").replace("nt", "t").replace("tch", "ts")
+    value = value.replace("sh", "s").replace("ak", "k").replace("nt", "t").replace("tch", "ts")
     value = value.replace("a", "e").replace("e", "i").replace("i", "o").replace("o", "u").replace("u", "a")
     value = value.replace("ac", "as").replace("ca", "sa")
     value = value.replace("ic", "is").replace("ci", "ce")
@@ -21,6 +21,8 @@ def replace(value = ""):
     value = value.replace("gn", "ng").replace("ht", "th")
     value = value.replace("an", "on").replace("na", "no")
     value = value.replace("nu", "ny").replace("un", "yn")
+    value = value.replace("kc", "k").replace("ck", "k")
+    value = value.replace("td", "t").replace("dt", "d").replace("z", "g")
     value = value.replace("'", "")
     return value
 varient = {
@@ -137,6 +139,7 @@ def GETOLF(text = "", varient = "informal", type = "m", simlified = True):
     returnData = returnData.replace(" || ", ", ").replace(" |", "| ").replace("  ", " ").replace("  ", " ")
     if varient > 100:
         returnData = remove_consecutive_duplicates(returnData)
+    returnData = returnData.replace("ak", "a")
     return returnData
 """translateText = "hello, this is an example of girian text in this specific varient"
 translate(translateText, varient["normal"])
