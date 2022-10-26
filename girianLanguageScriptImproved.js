@@ -25,23 +25,44 @@ function translate(text = "", returnType = false) {
 }
 function translateIndividual(text = "") {
     var returnText = text
-    returnText = returnText.split("").reverse().join("")
-    var last1 = returnText[returnText.length-1]
-    var last2 = returnText.length >= 2 ? returnText[returnText.length-2] : ""
-    var last3 = returnText.length >= 3 ? returnText[returnText.length-3] : ""
-    var last4 = returnText.length >= 4 ? returnText[returnText.length-4] : ""
-    var last5 = returnText.length >= 5 ? returnText[returnText.length-5] : ""
+    var minusOne = returnText[returnText.length-1]
+    minusOne = minusOne === undefined ? "" : minusOne
+    var minusTwo = returnText[returnText.length-2]
+    minusTwo = minusTwo === undefined ? "" : minusTwo
+    var minusThree = returnText[returnText.length-3]
+    minusThree = minusThree === undefined ? "" : minusThree
+    var minusFour = returnText[returnText.length-4]
+    minusFour = minusFour === undefined ? minusThree : minusFour
+    var minusFive = returnText[returnText.length-5]
+    minusFive = minusFive === undefined ? minusFour : minusFive
     returnText = returnText.split("")
-    returnText[0] = ""
-    returnText[returnText.length-1] = ""
-    returnText[1] = ""
-    returnText[4] = ""
-    returnText = returnText.join("")
-    returnText = `${last4}a${last1}${last5}e${last2}${returnText}`
-    if (returnText == undefined) {
-        returnText = ""
-        
-    }
-    return rCD(returnText)
+    returnText[returnText.length-1] = returnText[0]
+    returnText[0] = minusOne
+    returnText = returnText.join("").replaceAll(",")
+    returnText = `${minusFour}a${returnText}`
+    return rCD(change(returnText))
+}
+function change(returnText = "") {
+    returnText = returnText.toLowerCase()
+    returnText = returnText.replaceAll("a", "e").replaceAll("i", "a").replaceAll("o", "i").replaceAll("e", "o")
+    returnText = returnText.replaceAll("kc", "k")
+    returnText = returnText.replaceAll("ck", "k")
+    returnText = returnText.replaceAll("wh", "w")
+    returnText = returnText.replaceAll("hw", "h")
+    returnText = returnText.replaceAll("q", "k")
+    returnText = returnText.replaceAll("ae", "a").replaceAll("oe", "o").replaceAll("ea", "e").replaceAll("eo", "e")
+    returnText = returnText.replaceAll("ak", "as")
+    returnText = returnText.replaceAll("ka", "sa")
+    returnText = returnText.replaceAll("ik", "is")
+    returnText = returnText.replaceAll("ki", "ke")
+    returnText = returnText.replaceAll("ku", "su")
+    returnText = returnText.replaceAll("sh", "s")
+    returnText = returnText.replaceAll("kh", "k")
+    returnText = returnText.replaceAll("ng", "a") // we don't use this anymore
+    returnText = returnText.replaceAll("gn", "e")
+    returnText = returnText.replaceAll("th", "t") // we don't use this anymore
+    returnText = returnText.replaceAll("ht", "t")
+    returnText = returnText.replaceAll("'", "")
+    return returnText
 }
 translate("hi hello this is someone I think")
