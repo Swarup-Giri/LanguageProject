@@ -6,7 +6,7 @@ function rCD(input, value = 1) {
         else
             return input[0] + rCD(input.substring(value));
 }
-function translate(text = "", returnType = false) {
+function translate(text = "", regionalVarient = 0, returnType = false) {
     var returnText = text
     returnText = returnText.replaceAll(".", " . ").replaceAll(",", " , ").replaceAll("!", " ! ").replaceAll("?", " ? ").replaceAll(":", " : ").replaceAll(";", " ; ").replaceAll("\"", " \" ").replaceAll("\'", " \' ")
     returnText = returnText.split(" ")
@@ -17,13 +17,13 @@ function translate(text = "", returnType = false) {
                 delete returnText[i + 1]
             }
         }*/
-        returnText[i] = translateIndividual(returnText[i])
+        returnText[i] = translateIndividual(returnText[i], regionalVarient)
         
     }
     returnText = returnText.join(" ").replaceAll(" . ", ".").replaceAll(" , ", ",").replaceAll(" ! ", "!").replaceAll(" ? ", "?").replaceAll(" : ", ":").replaceAll(" ; ", ";").replaceAll(" \" ", "\"").replaceAll(" \' ", "\'").replaceAll("  ", " ").replaceAll("  ", " ")
     if (returnType) { return returnText } console.log(returnText)
 }
-function translateIndividual(text = "") {
+function translateIndividual(text = "", rv = 0) {
     var returnText = text
     var minusOne = returnText[returnText.length-1]
     minusOne = minusOne === undefined ? "" : minusOne
@@ -39,7 +39,8 @@ function translateIndividual(text = "") {
     returnText[returnText.length-1] = returnText[0]
     returnText[0] = minusOne
     returnText = returnText.join("").replaceAll(",")
-    returnText = `${minusFour}a${returnText}`
+    var firstLetter = rv == 0 ? minusFour : rv == 1 ? minusFive : rv == 2 ? minusThree : rv == 3 ? minusOne : minusTwo
+    returnText = `${firstLetter}a${returnText}`
     return rCD(change(returnText))
 }
 function change(returnText = "") {
@@ -62,7 +63,17 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("gn", "e")
     returnText = returnText.replaceAll("th", "t") // we don't use this anymore
     returnText = returnText.replaceAll("ht", "t")
+    returnText = returnText.replaceAll("oa", "oi")
+    returnText = returnText.replaceAll("ao", "io")
+    returnText = returnText.replaceAll("lh", "l")
+    returnText = returnText.replaceAll("oh", "o")
+    returnText = returnText.replaceAll("hl", "l")
     returnText = returnText.replaceAll("'", "")
     return returnText
 }
-translate("hi hello this is someone I think")
+text = "hello hi hallo hola"
+translate(text, 0)
+translate(text, 1)
+translate(text, 2)
+translate(text, 3)
+translate(text, 4)
