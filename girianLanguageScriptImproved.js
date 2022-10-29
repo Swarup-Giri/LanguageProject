@@ -68,10 +68,13 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("lh", "l")
     returnText = returnText.replaceAll("oh", "o")
     returnText = returnText.replaceAll("hl", "l")
+    returnText = returnText.replaceAll("lb", "b")
+    returnText = returnText.replaceAll("bl", "b")
+    returnText = returnText.replaceAll("y", "i")
     returnText = returnText.replaceAll("'", "")
     return returnText
 }
-text = "hello hi hallo hola"
+text = "I think you are bald"
 translate(text, 0)
 translate(text, 1)
 translate(text, 2)
