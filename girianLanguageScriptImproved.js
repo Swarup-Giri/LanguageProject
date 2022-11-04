@@ -30,7 +30,7 @@ function translate(text = "", regionalVarient = 0, joiningThreshold = 3, returnT
         
         if (returnText[i+1] != undefined && returnText[i+1] != "" && returnText[i] != "") {
             if (returnText[i].length <= joiningThreshold) {
-                returnText[i] = returnText[i] + returnText[i][0] + "y" + returnText[i+1]
+                returnText[i] = returnText[i] + returnText[i][0] + "i" + returnText[i+1]
                 returnText[i+1] = ""
                 returnText[i] = rCD(returnText[i])
             }
@@ -44,6 +44,7 @@ function translate(text = "", regionalVarient = 0, joiningThreshold = 3, returnT
         
     }
     returnText = returnText.join(" ").replaceAll(" . ", ".").replaceAll(" , ", ",").replaceAll(" ! ", "!").replaceAll(" ? ", "?").replaceAll(" : ", ":").replaceAll(" ; ", ";").replaceAll(" \" ", "\"").replaceAll(" \' ", "\'").replaceAll("  ", " ").replaceAll("  ", " ")
+    returnText = change(returnText)
     if (returnType) { return returnText } console.log(returnText)
 }
 function translateIndividual(text = "", rv = 0) {
@@ -74,13 +75,13 @@ function translateIndividual(text = "", rv = 0) {
 }
 function change(returnText = "") {
     returnText = returnText.toLowerCase()
-    /*returnText = returnText.replaceAll("a", "e").replaceAll("i", "a").replaceAll("o", "i").replaceAll("e", "o")
-    returnText = returnText.replaceAll("kc", "k")
-    returnText = returnText.replaceAll("ck", "k")
+    //returnText = returnText.replaceAll("a", "e").replaceAll("i", "a").replaceAll("o", "i").replaceAll("e", "o"
     returnText = returnText.replaceAll("wh", "w")
     returnText = returnText.replaceAll("hw", "h")
     returnText = returnText.replaceAll("q", "k")
-    returnText = returnText.replaceAll("ae", "a").replaceAll("oe", "o").replaceAll("ea", "e").replaceAll("eo", "e")
+    returnText = returnText.replaceAll("kc", "k")
+    returnText = returnText.replaceAll("ck", "k")
+    /*returnText = returnText.replaceAll("ae", "a").replaceAll("oe", "o").replaceAll("ea", "e").replaceAll("eo", "e")
     returnText = returnText.replaceAll("ak", "as")
     returnText = returnText.replaceAll("ka", "sa")
     returnText = returnText.replaceAll("ik", "is")
@@ -89,10 +90,12 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("sh", "s")
     returnText = returnText.replaceAll("kh", "k")
     returnText = returnText.replaceAll("ng", "a") // we don't use this anymore
-    returnText = returnText.replaceAll("gn", "e")
-    returnText = returnText.replaceAll("th", "t") // we don't use this anymore
+    returnText = returnText.replaceAll("gn", "e")*/
+    returnText = returnText.replaceAll("th", "t")
     returnText = returnText.replaceAll("ht", "t")
-    returnText = returnText.replaceAll("oa", "oi")
+    returnText = returnText.replaceAll("yu", "y")
+    returnText = returnText.replaceAll("uy", "y")
+    /*returnText = returnText.replaceAll("oa", "oi")
     returnText = returnText.replaceAll("ao", "io")
     returnText = returnText.replaceAll("lh", "l")
     returnText = returnText.replaceAll("oh", "o")
@@ -103,7 +106,7 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("'", "")*/
     return returnText
 }
-var text = "I think that you are bald"
+var text = "The quick brown fox jumps over the lazy dog nextnextnextnextnext the of to and a in is it you that he was for on"
 translate(text, 0)
 translate(text, 1)
 translate(text, 2)
