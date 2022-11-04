@@ -6,7 +6,7 @@ function rCD(input, value = 1) {
         else
             return input[0] + rCD(input.substring(value));
 }
-function translate(text = "", regionalVarient = 0, returnType = false) {
+function translate(text = "", regionalVarient = 0, joiningThreshold = 3, returnType = false) {
     var returnText = text
     returnText = returnText.replaceAll(".", " . ").replaceAll(",", " , ").replaceAll("!", " ! ").replaceAll("?", " ? ").replaceAll(":", " : ").replaceAll(";", " ; ").replaceAll("\"", " \" ").replaceAll("\'", " \' ")
     returnText = returnText.split(" ")
@@ -18,6 +18,29 @@ function translate(text = "", regionalVarient = 0, returnType = false) {
             }
         }*/
         returnText[i] = translateIndividual(returnText[i], regionalVarient)
+        
+    }
+    for (var i = 0; i < returnText.length; i++) {
+        /*if (i < returnText.length-1) {
+            if (returnText[i + 1].length < 5) {
+                returnText[i] = returnText[i] + returnText[i + 1]
+                delete returnText[i + 1]
+            }
+        }*/
+        
+        if (returnText[i+1] != undefined && returnText[i+1] != "" && returnText[i] != "") {
+            if (returnText[i].length <= joiningThreshold) {
+                returnText[i] = returnText[i] + returnText[i][0] + "y" + returnText[i+1]
+                returnText[i+1] = ""
+                returnText[i] = rCD(returnText[i])
+            }
+        }
+            if (returnText[i].length > 1) {
+                returnText[i] = returnText[i] + "a"
+                returnText[i] = returnText[i].replaceAll("ia", "a").replaceAll("ua", "a").replaceAll("ea", "a").replaceAll("oa", "a")
+                returnText[i] = rCD(returnText[i])
+            }
+        
         
     }
     returnText = returnText.join(" ").replaceAll(" . ", ".").replaceAll(" , ", ",").replaceAll(" ! ", "!").replaceAll(" ? ", "?").replaceAll(" : ", ":").replaceAll(" ; ", ";").replaceAll(" \" ", "\"").replaceAll(" \' ", "\'").replaceAll("  ", " ").replaceAll("  ", " ")
@@ -41,11 +64,17 @@ function translateIndividual(text = "", rv = 0) {
     returnText = returnText.join("").replaceAll(",")
     var firstLetter = rv == 0 ? minusFour : rv == 1 ? minusFive : rv == 2 ? minusThree : rv == 3 ? minusOne : minusTwo
     returnText = `${firstLetter}a${returnText}`
+    if (returnText.length > 2) {
+        returnText = returnText.replaceAll(returnText[0], returnText[1])
+        if (returnText.length > 4) {
+            returnText = returnText.replaceAll(returnText[2], returnText[3])
+        }
+    }
     return rCD(change(returnText))
 }
 function change(returnText = "") {
     returnText = returnText.toLowerCase()
-    returnText = returnText.replaceAll("a", "e").replaceAll("i", "a").replaceAll("o", "i").replaceAll("e", "o")
+    /*returnText = returnText.replaceAll("a", "e").replaceAll("i", "a").replaceAll("o", "i").replaceAll("e", "o")
     returnText = returnText.replaceAll("kc", "k")
     returnText = returnText.replaceAll("ck", "k")
     returnText = returnText.replaceAll("wh", "w")
@@ -71,10 +100,10 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("lb", "b")
     returnText = returnText.replaceAll("bl", "b")
     returnText = returnText.replaceAll("y", "i")
-    returnText = returnText.replaceAll("'", "")
+    returnText = returnText.replaceAll("'", "")*/
     return returnText
 }
-text = "I think you are bald"
+text = "I think that you are bald"
 translate(text, 0)
 translate(text, 1)
 translate(text, 2)
