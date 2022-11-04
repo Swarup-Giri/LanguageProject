@@ -96,6 +96,7 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("ht", "t")
     returnText = returnText.replaceAll("yu", "y")
     returnText = returnText.replaceAll("uy", "y")
+    returnText = returnText.replaceAll("y", "i")
     /*returnText = returnText.replaceAll("oa", "oi")
     returnText = returnText.replaceAll("ao", "io")
     returnText = returnText.replaceAll("lh", "l")
@@ -107,7 +108,7 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("'", "")*/
     return returnText
 }
-var text = "a b c d e f g h i j k l m n o p q r s t u v w x w z"
+var text = "The quick brown fox jumps over the lazy dog as the lazy dog starts to bite the quick brown fox"
 translate(text, 0)
 translate(text, 1)
 translate(text, 2)
