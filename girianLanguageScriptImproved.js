@@ -30,7 +30,7 @@ function translate(text = "", regionalVarient = 0, joiningThreshold = 3, returnT
         
         if (returnText[i+1] != undefined && returnText[i+1] != "" && returnText[i] != "") {
             if (returnText[i].length <= joiningThreshold) {
-                returnText[i] = returnText[i] + returnText[i][0] + "i" + returnText[i+1]
+                returnText[i] = returnText[i] + returnText[i][0] + "a" + returnText[i+1]
                 returnText[i+1] = ""
                 returnText[i] = rCD(returnText[i])
             }
@@ -81,6 +81,7 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("q", "k")
     returnText = returnText.replaceAll("kc", "k")
     returnText = returnText.replaceAll("ck", "k")
+    returnText = returnText.replaceAll("x", "e")
     /*returnText = returnText.replaceAll("ae", "a").replaceAll("oe", "o").replaceAll("ea", "e").replaceAll("eo", "e")
     returnText = returnText.replaceAll("ak", "as")
     returnText = returnText.replaceAll("ka", "sa")
@@ -106,7 +107,7 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("'", "")*/
     return returnText
 }
-var text = "The quick brown fox jumps over the lazy dog nextnextnextnextnext the of to and a in is it you that he was for on"
+var text = "a b c d e f g h i j k l m n o p q r s t u v w x w z"
 translate(text, 0)
 translate(text, 1)
 translate(text, 2)
