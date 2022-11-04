@@ -103,7 +103,7 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("'", "")*/
     return returnText
 }
-text = "I think that you are bald"
+var text = "I think that you are bald"
 translate(text, 0)
 translate(text, 1)
 translate(text, 2)
