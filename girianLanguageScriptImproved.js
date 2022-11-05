@@ -108,7 +108,7 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("'", "")*/
     return returnText
 }
-var text = "The quick brown fox jumps over the lazy dog as the lazy dog starts to bite the quick brown fox"
+var text = ""
 translate(text, 0)
 translate(text, 1)
 translate(text, 2)
