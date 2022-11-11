@@ -85,6 +85,7 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("kc", "k")
     returnText = returnText.replaceAll("ck", "k")
     returnText = returnText.replaceAll("x", "e")
+    returnText = returnText.replaceAll("c", "k")
     /*returnText = returnText.replaceAll("ae", "a").replaceAll("oe", "o").replaceAll("ea", "e").replaceAll("eo", "e")
     returnText = returnText.replaceAll("ak", "as")
     returnText = returnText.replaceAll("ka", "sa")
@@ -114,14 +115,14 @@ function change(returnText = "") {
 var text = "hello this is an example of something I guess the quick brown fox jumps over the lazy dog hello the dog said when the dog then decided to jump over the fence after the quick brown fox jumped over the lazy dog which was the dog that then decided to jump over the fence"
 
 /******************************************
- 0 alha'ahia sis'n aeaple fof'aometains aia'aeag aha'aik aowb aoa'ampj avea aha'aza aoa'alh aha'aoa aia'ahea aha'aoa ahea aecae oto'auma avea aha'ancf atea aha'aik aowb aoa'auapej avea aha'aza aoa'aicw a'aha aoa'h ahea aecae oto'auma avea aha'ancf
- 1 aela ahia sis'n aeample fof'aomeahins aia'aueua aha'auica arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea aeaie oto'auma avea aha'aenca aftea aha'auica arowa aoa'ampej avea aha'aza aoa'ahica a'aha aoa'h ahea aeaie oto'auma avea aha'aenca
- 2 aeah aita'si n'aeamale fof'aometans aia'auaug aha'auak arawb aoa'auapj aeoa'aha azla'aoa aeah aha'aoa aisa'aew aha'aoa aeta'ecie oto'amj aeoa'aha aeacf afaea aha'auak arawb aoa'aumaej aeoa'aha azla'aoa ahacw a'aha aoa'a aeta'ecie oto'amj aeoa'aha aeacf
- 3 elhe'hit aia'a emple aoa'ometins a'ueug t'uik rowb ofo'umpj veov't azla'od elhe't odo'ais hew't odo'het ecie ata'umj veov't ancf ftef t'uik rowb ofo'umpej veov't azla'od aicw awa't odo'h het'ecie ata'umj veov't ancf
- 4 aela ahia sis'n ampla fof'aomatins aia'aueua aha'auica arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea acia oto'auma avea aha'aenca aftea aha'auica arowa aoa'aumpea avea aha'aza aoa'ahica a'aha aoa'h ahea acia oto'auma avea aha'aenca
- 5 aela ahia sis'n emple fof'ametins aia'aueua aha'auica arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea ecie oto'auma avea aha'aenca aftea aha'auica arowa aoa'aumpea avea aha'aza aoa'ahica a'aha aoa'h ahea ecie oto'auma avea aha'aenca
- 6 aela ahia sis'n emple fof'aoaetins aia'aueua aha'auica arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea ecie oto'auma avea aha'aenca aftea aha'auica arowa aoa'aumpea avea aha'aza aoa'ahica a'aha aoa'h ahea ecie oto'auma avea aha'aenca
- 7 aela ahia sis'n emple fof'aometina aia'aueua aha'auica arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea ecie oto'auma avea aha'aenca aftea aha'auica arowa aoa'aumpea avea aha'aza aoa'ahica a'aha aoa'h ahea ecie oto'auma avea aha'aenca
+ 0 alha'ahia sis'n aeaple fof'aometains aia'aeag aha'aik aowb aoa'ampj avea aha'aza aoa'alh aha'aoa aia'ahea aha'aoa ahea aekae oto'auma avea aha'ankf atea aha'aik aowb aoa'auapej avea aha'aza aoa'aikw a'aha aoa'h ahea aekae oto'auma avea aha'ankf
+ 1 aela ahia sis'n aeample fof'aomeahins aia'aueua aha'auika arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea aeaie oto'auma avea aha'aenka aftea aha'auika arowa aoa'ampej avea aha'aza aoa'ahika a'aha aoa'h ahea aeaie oto'auma avea aha'aenka
+ 2 aeah aita'si n'aeamale fof'aometans aia'auaug aha'auak arawb aoa'auapj aeoa'aha azla'aoa aeah aha'aoa aisa'aew aha'aoa aeta'ekie oto'amj aeoa'aha aeakf afaea aha'auak arawb aoa'aumaej aeoa'aha azla'aoa ahakw a'aha aoa'a aeta'ekie oto'amj aeoa'aha aeakf
+ 3 elhe'hit aia'a emple aoa'ometins a'ueug t'uik rowb ofo'umpj veov't azla'od elhe't odo'ais hew't odo'het ekie ata'umj veov't ankf ftef t'uik rowb ofo'umpej veov't azla'od aikw awa't odo'h het'ekie ata'umj veov't ankf
+ 4 aela ahia sis'n ampla fof'aomatins aia'aueua aha'auika arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea akia oto'auma avea aha'aenka aftea aha'auika arowa aoa'aumpea avea aha'aza aoa'ahika a'aha aoa'h ahea akia oto'auma avea aha'aenka
+ 5 aela ahia sis'n emple fof'ametins aia'aueua aha'auika arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea ekie oto'auma avea aha'aenka aftea aha'auika arowa aoa'aumpea avea aha'aza aoa'ahika a'aha aoa'h ahea ekie oto'auma avea aha'aenka
+ 6 aela ahia sis'n emple fof'aoaetins aia'aueua aha'auika arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea ekie oto'auma avea aha'aenka aftea aha'auika arowa aoa'aumpea avea aha'aza aoa'ahika a'aha aoa'h ahea ekie oto'auma avea aha'aenka
+ 7 aela ahia sis'n emple fof'aometina aia'aueua aha'auika arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea ekie oto'auma avea aha'aenka aftea aha'auika arowa aoa'aumpea avea aha'aza aoa'ahika a'aha aoa'h ahea ekie oto'auma avea aha'aenka
  ******************************************/
 
 translate(text, 0)
