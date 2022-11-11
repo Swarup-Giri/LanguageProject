@@ -111,7 +111,7 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("'", "")*/
     return returnText
 }
-var text = "thisisthestart thisisthestart hello this is an example of something I guess the quick brown fox jumps over the lazy dog hello the dog said when the dog then decided to jump over the fence after the quick brown fox jumped over the lazy dog which was the dog that then decided to jump over the fence"
+var text = "hello this is an example of something I guess the quick brown fox jumps over the lazy dog hello the dog said when the dog then decided to jump over the fence after the quick brown fox jumped over the lazy dog which was the dog that then decided to jump over the fence"
 
 /******************************************
  0 alha'ahia sis'n aeaple fof'aometains aia'aeag aha'aik aowb aoa'ampj avea aha'aza aoa'alh aha'aoa aia'ahea aha'aoa ahea aecae oto'auma avea aha'ancf atea aha'aik aowb aoa'auapej avea aha'aza aoa'aicw a'aha aoa'h ahea aecae oto'auma avea aha'ancf
