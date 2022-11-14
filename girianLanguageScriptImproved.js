@@ -125,10 +125,10 @@ var text = "hello this is an example of something I guess the quick brown fox ju
  7 aela ahia sis'n emple fof'aometina aia'aueua aha'auika arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea ekie oto'auma avea aha'aenka aftea aha'auika arowa aoa'aumpea avea aha'aza aoa'ahika a'aha aoa'h ahea ekie oto'auma avea aha'aenka
  ******************************************/
 
-translate(text, 0)
+translate(text, 0) // good
 translate(text, 1)
-translate(text, 2)
-translate(text, 3)
+translate(text, 2) // good
+translate(text, 3) // good
 translate(text, 4)
 translate(text, 5)
 translate(text, 6)
