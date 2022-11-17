@@ -8,37 +8,16 @@ function rCD(input, value = 1) {
 }
 function translate(text = "", regionalVarient = 0, joiningThreshold = 3, returnType = false) {
     var returnText = text
-    returnText = returnText.replaceAll(".", " . ").replaceAll(",", " , ").replaceAll("!", " ! ").replaceAll("?", " ? ").replaceAll(":", " : ").replaceAll(";", " ; ").replaceAll("\"", " \" ").replaceAll("\'", " \' ")
+    returnText = returnText.replaceAll(".", " . ").replaceAll(",", " , ").replaceAll("!", " ! ").replaceAll("?", " ? ").replaceAll(":", " : ").replaceAll(";", " ; ").replaceAll("\"", " \" ").replaceAll("\'", " \' ").replaceAll("0", " 0 ").replaceAll("1", " 1 ").replaceAll("2", " 2 ").replaceAll("3", " 3 ").replaceAll("4", " 4 ").replaceAll("5", " 5 ").replaceAll("6", " 6 ").replaceAll("7", " 7 ").replaceAll("8", " 8 ").replaceAll("9", " 9 ").replaceAll("\\", " \\ ").replaceAll("/", " / ").replaceAll("<", " < ").replaceAll(">", " > ")
     returnText = returnText.split(" ")
     for (var i = 0; i < returnText.length; i++) {
-        /*if (i < returnText.length-1) {
-            if (returnText[i + 1].length < 5) {
-                returnText[i] = returnText[i] + returnText[i + 1]
-                delete returnText[i + 1]
-            }
-        }*/
-        returnText[i] = translateIndividual(returnText[i], regionalVarient)
-        
-    }
-    for (var i = 0; i < returnText.length; i++) {
-        /*if (i < returnText.length-1) {
-            if (returnText[i + 1].length < 5) {
-                returnText[i] = returnText[i] + returnText[i + 1]
-                delete returnText[i + 1]
-            }
-        }*/
-        
-        if (returnText[i+1] != undefined && returnText[i+1] != "" && returnText[i] != "") {
-            if (returnText[i].length <= joiningThreshold) {
-                returnText[i] = returnText[i] + returnText[i][0] + "\'" + returnText[i+1]
-                returnText[i+1] = ""
-                returnText[i] = rCD(returnText[i])
-            }
+        if (returnText[i].length > 1) {
+            returnText[i] = translateIndividual(returnText[i], regionalVarient)
         }
         
         
     }
-    returnText = returnText.join(" ").replaceAll(" . ", ".").replaceAll(" , ", ",").replaceAll(" ! ", "!").replaceAll(" ? ", "?").replaceAll(" : ", ":").replaceAll(" ; ", ";").replaceAll(" \" ", "\"").replaceAll(" \' ", "\'").replaceAll("  ", " ").replaceAll("  ", " ")
+    returnText = returnText.join(" ").replaceAll(" . ", ".").replaceAll(" , ", ",").replaceAll(" ! ", "!").replaceAll(" ? ", "?").replaceAll(" : ", ":").replaceAll(" ; ", ";").replaceAll(" \" ", "\"").replaceAll(" \' ", "\'").replaceAll("  ", " ").replaceAll("  ", " ").replaceAll(" 0 ", "0").replaceAll(" 1 ", "1").replaceAll(" 2 ", "2").replaceAll(" 3 ", "3").replaceAll(" 4 ", "4").replaceAll(" 5 ", "5").replaceAll(" 6 ", "6").replaceAll(" 7 ", "7").replaceAll(" 8 ", "8").replaceAll(" 9 ", "9").replaceAll(" \\ ", "\\").replaceAll(" / ", "/").replaceAll(" < ", "<").replaceAll(" > ", ">")
     returnText = change(returnText)
     if (returnType) { return returnText } console.log(returnText)
 }
@@ -48,6 +27,8 @@ function translateIndividual(text = "", rv = 0) {
     minusOne = minusOne === undefined ? "" : minusOne
     var minusTwo = returnText[returnText.length-2]
     minusTwo = minusTwo === undefined ? "" : minusTwo
+    var minusTwoV2 = text[text.length-3]
+    minusTwoV2 = minusTwoV2 === undefined ? text[text.length-1] : minusTwoV2
     var minusThree = returnText[returnText.length-3]
     minusThree = minusThree === undefined ? "" : minusThree
     var minusFour = returnText[returnText.length-4]
@@ -64,16 +45,13 @@ function translateIndividual(text = "", rv = 0) {
     minusNine = minusNine === undefined ? minusEight : minusNine
     returnText = returnText.split("")
     returnText[returnText.length-1] = returnText[0]
+    returnText[returnText.length-2] = returnText[1]
     returnText[0] = minusOne
+    returnText[1] = minusTwo
     returnText = returnText.join("").replaceAll(",")
     var firstLetter = rv == 0 ? minusFour : rv == 1 ? minusFive : rv == 2 ? minusThree : rv == 3 ? minusOne : rv == 4 ? minusSix : rv == 5 ? minusEight : rv == 6 ? minusSeven : minusNine
-    returnText = `${firstLetter}a${returnText}`
-    if (returnText.length > 2) {
-        returnText = returnText.replaceAll(returnText[0], returnText[1])
-        if (returnText.length > 4) {
-            returnText = returnText.replaceAll(returnText[2], returnText[3])
-        }
-    }
+    var firstVowel = rv == 0 ? "a" : rv == 1 ? "e" : rv == 2 ? "i" : rv == 3 ? "o" : rv == 4 ? "u" : rv == 5 ? "a" : rv == 6 ? "e" : "wu"
+    returnText = `${firstLetter}${firstVowel}${returnText}${minusTwoV2}`
     return rCD(change(returnText))
 }
 function change(returnText = "") {
@@ -84,36 +62,34 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("q", "k")
     returnText = returnText.replaceAll("kc", "k")
     returnText = returnText.replaceAll("ck", "k")
-    returnText = returnText.replaceAll("x", "e")
     returnText = returnText.replaceAll("c", "k")
-    /*returnText = returnText.replaceAll("ae", "a").replaceAll("oe", "o").replaceAll("ea", "e").replaceAll("eo", "e")
-    returnText = returnText.replaceAll("ak", "as")
-    returnText = returnText.replaceAll("ka", "sa")
-    returnText = returnText.replaceAll("ik", "is")
-    returnText = returnText.replaceAll("ki", "ke")
-    returnText = returnText.replaceAll("ku", "su")
-    returnText = returnText.replaceAll("sh", "s")
-    returnText = returnText.replaceAll("kh", "k")
-    returnText = returnText.replaceAll("ng", "a") // we don't use this anymore
-    returnText = returnText.replaceAll("gn", "e")*/
+    returnText = returnText.replaceAll("kk", "kh")
+    returnText = returnText.replaceAll("x", "e")
     returnText = returnText.replaceAll("th", "t")
     returnText = returnText.replaceAll("ht", "t")
-    returnText = returnText.replaceAll("yu", "y")
-    returnText = returnText.replaceAll("uy", "y")
+    returnText = returnText.replaceAll("yu", "u")
+    returnText = returnText.replaceAll("ya", "a")
+    returnText = returnText.replaceAll("ye", "e")
+    returnText = returnText.replaceAll("yi", "i")
+    returnText = returnText.replaceAll("yo", "o")
+    returnText = returnText.replaceAll("uy", "i")
     returnText = returnText.replaceAll("y", "i")
-    /*returnText = returnText.replaceAll("oa", "oi")
-    returnText = returnText.replaceAll("ao", "io")
-    returnText = returnText.replaceAll("lh", "l")
-    returnText = returnText.replaceAll("oh", "o")
-    returnText = returnText.replaceAll("hl", "l")
-    returnText = returnText.replaceAll("lb", "b")
-    returnText = returnText.replaceAll("bl", "b")
-    returnText = returnText.replaceAll("y", "i")
-    returnText = returnText.replaceAll("'", "")*/
+    returnText = returnText.replaceAll("tw", "w")
+    returnText = returnText.replaceAll("dw", "w")
+    returnText = returnText.replaceAll("tw", "w")
+    returnText = returnText.replaceAll("ts", "s")
+    returnText = returnText.replaceAll("ug", "ang")
+    returnText = returnText.replaceAll("dl", "dul")
+    returnText = returnText.replaceAll("wr", "w")
+    returnText = returnText.replaceAll("bi", "ba")
+    returnText = returnText.replaceAll("by", "be")
+    returnText = returnText.replaceAll("bo", "bu")
+    returnText = returnText.replaceAll("kw", "k")
+    returnText = returnText.replaceAll("nw", "n")
+    returnText = returnText.replaceAll("hk", "kh")
+    returnText = returnText.replaceAll("hn", "han")
     return returnText
 }
-var text = "hello this is an example of something I guess the quick brown fox jumps over the lazy dog hello the dog said when the dog then decided to jump over the fence after the quick brown fox jumped over the lazy dog which was the dog that then decided to jump over the fence"
-
 /******************************************
  0 alha'ahia sis'n aeaple fof'aometains aia'aeag aha'aik aowb aoa'ampj avea aha'aza aoa'alh aha'aoa aia'ahea aha'aoa ahea aekae oto'auma avea aha'ankf atea aha'aik aowb aoa'auapej avea aha'aza aoa'aikw a'aha aoa'h ahea aekae oto'auma avea aha'ankf
  1 aela ahia sis'n aeample fof'aomeahins aia'aueua aha'auika arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea aeaie oto'auma avea aha'aenka aftea aha'auika arowa aoa'ampej avea aha'aza aoa'ahika a'aha aoa'h ahea aeaie oto'auma avea aha'aenka
@@ -124,7 +100,7 @@ var text = "hello this is an example of something I guess the quick brown fox ju
  6 aela ahia sis'n emple fof'aoaetins aia'aueua aha'auika arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea ekie oto'auma avea aha'aenka aftea aha'auika arowa aoa'aumpea avea aha'aza aoa'ahika a'aha aoa'h ahea ekie oto'auma avea aha'aenka
  7 aela ahia sis'n emple fof'aometina aia'aueua aha'auika arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea ekie oto'auma avea aha'aenka aftea aha'auika arowa aoa'aumpea avea aha'aza aoa'ahika a'aha aoa'h ahea ekie oto'auma avea aha'aenka
  ******************************************/
-
+var text = ""
 translate(text, 0) // good
 translate(text, 1)
 translate(text, 2) // good
