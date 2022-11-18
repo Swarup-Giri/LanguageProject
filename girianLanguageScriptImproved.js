@@ -88,6 +88,14 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("nw", "n")
     returnText = returnText.replaceAll("hk", "kh")
     returnText = returnText.replaceAll("hn", "han")
+    returnText = returnText.replaceAll("tl", "til")
+    returnText = returnText.replaceAll("f", "p")
+    returnText = returnText.replaceAll("ku", "khu")
+    returnText = returnText.replaceAll("ka", "kha")
+    returnText = returnText.replaceAll("ke", "khe")
+    returnText = returnText.replaceAll("ki", "khi")
+    returnText = returnText.replaceAll("ko", "kho")
+    returnText = returnText.replaceAll("dr", "dur")
     return returnText
 }
 /******************************************
