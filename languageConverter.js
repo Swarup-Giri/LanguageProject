@@ -87,9 +87,3 @@ function translate (text = "", varient = 0, returnBack = false) {
     } 
     console.log(rt) //replace the first vowel in the result with the real first vowel.
 }
-translate(`hello there!`, 0)
-translate(`hello there!`, 1)
-translate(`hello there!`, 2)
-translate(`hello there!`, 3) //preferred
-translate(`hello there!`, 4)
-translate(`hello there!`, 5)
