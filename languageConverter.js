@@ -1,20 +1,41 @@
-function findFirstVowel(input = "") {
+function isVowel(input = "") {
+    if (input == "a" || input == "e" || input == "i" || input == "o" || input == "u") {
+        return true
+    }
+    return false
+}
+function findFirstVowel(input = "", min = true) {
     var a = input.indexOf("a") == -1 ? Infinity : input.indexOf("a")
     var e = input.indexOf("e") == -1 ? Infinity : input.indexOf("e")
     var i = input.indexOf("i") == -1 ? Infinity : input.indexOf("i")
     var o = input.indexOf("o") == -1 ? Infinity : input.indexOf("o")
     var u = input.indexOf("u") == -1 ? Infinity : input.indexOf("u")
     var lowest = Math.min(a, e, i, o, u)
-    if (lowest == a) {
-        return "a"
-    } else if (lowest == e) {
-        return "e"
-    } else if (lowest == i) {
-        return "i"
-    } else if (lowest == o) {
-        return "o"
-    } else if (lowest == u) {
-        return "u"
+    var highest = Math.max(a, e, i, o, u)
+    if (min) {    
+        if (lowest == a) {
+            return "a"
+        } else if (lowest == e) {
+            return "e"
+        } else if (lowest == i) {
+            return "i"
+        } else if (lowest == o) {
+            return "o"
+        } else if (lowest == u) {
+            return "u"
+        }
+    } else {
+        if (highest == a) {
+            return "a"
+        } else if (highest == e) {
+            return "e"
+        } else if (highest == i) {
+            return "i"
+        } else if (highest == o) {
+            return "o"
+        } else if (highest == u) {
+            return "u"
+        }
     }
 }
 function removeDuplicates(input, value = 1) {
@@ -76,10 +97,27 @@ function translate (text = "", varient = 0, returnBack = false) {
             if (rt[i].length <= Math.floor(originalText.length/2)) {
                 rt[i] = rt[i] //+ originalText[0]
             }
+            if (!(rt[i] == originalText)) {
+                rt[i] = rt[i] + findFirstVowel(rt[i], false)+ originalText[0].toLowerCase()
+            }
+            rt[i] = rt[i].split("")
+            for (var k = 0; k < rt[i].length; k++) {
+                if (k < rt[i].length - 1) {
+                    if (isVowel(rt[i][k]) && isVowel(rt[i][k + 1])) {
+                        rt[i][k + 1] = ""
+                    }
+                }
+                if (k < rt[i].length - 2) {
+                    if (isVowel(rt[i][k]) && isVowel(rt[i][k + 2])) {
+                        rt[i][k + 2] = ""
+                    }
+                }
+            }
+            rt[i] = rt[i].join("")
         }
     }
     rt = rt.join(" ")
-    rt = rt.replaceAll("undefined", "")
+    rt = rt.replaceAll("undefined", "").replaceAll("ck", "ch").replaceAll("tch", "ch")
     for (var j = 0; j < replaceCharacters.length; j++) { rt = rt.replaceAll(" " + replaceCharacters[j] + " ", replaceCharacters[j]) }
     rt = removeDuplicates(rt)
     if (returnBack) {
