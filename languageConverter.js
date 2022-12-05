@@ -46,7 +46,7 @@ function removeDuplicates(input, value = 1) {
         else
             return input[0] + removeDuplicates(input.substring(value));
 }
-function translate (text = "", varient = 0, returnBack = false) {
+function translate (text = "", returnBack = false, varient = 0) {
     var rt = text
     rt.replaceAll("\s", " ")
     var replaceCharacters = [".", ",", "<", ">", "?", "/", "\\", "-", "=", "_", "+", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "`", "~", "\"", "\'", "[", "]", "{", "}", ";", ":", "|"]
@@ -55,7 +55,6 @@ function translate (text = "", varient = 0, returnBack = false) {
 
     for (var i = 0; i < rt.length; i++) {
         if (rt[i].length > 1) {
-            // change
             var originalText = rt[i]
             var last1 = rt[i][rt[i].length - 1] === undefined ? "" : rt[i][rt[i].length - 1]
             var last2 = rt[i][rt[i].length - 2] === undefined ? last1 : rt[i][rt[i].length - 2]
@@ -113,15 +112,25 @@ function translate (text = "", varient = 0, returnBack = false) {
                     }
                 }
             }
-            rt[i] = rt[i].join("")
+            rt[i] = removeDuplicates(rt[i].join(""))
         }
     }
+    
     rt = rt.join(" ")
     rt = rt.replaceAll("undefined", "").replaceAll("ck", "ch").replaceAll("tch", "ch")
     for (var j = 0; j < replaceCharacters.length; j++) { rt = rt.replaceAll(" " + replaceCharacters[j] + " ", replaceCharacters[j]) }
-    rt = removeDuplicates(rt)
+    
     if (returnBack) {
         return rt
     } 
     console.log(rt) //replace the first vowel in the result with the real first vowel.
 }
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+readline.question('Input: ', name => {
+    console.log("Output: " + translate(name, true))
+    readline.close()
+})
