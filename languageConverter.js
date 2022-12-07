@@ -55,6 +55,7 @@ function translate (text = "", returnBack = false, varient = 0) {
 
     for (var i = 0; i < rt.length; i++) {
         if (rt[i].length > 1) {
+            var character = "abcdefghijklmnopqrstuvwxyz"
             var originalText = rt[i]
             var last1 = rt[i][rt[i].length - 1] === undefined ? "" : rt[i][rt[i].length - 1]
             var last2 = rt[i][rt[i].length - 2] === undefined ? last1 : rt[i][rt[i].length - 2]
@@ -66,7 +67,7 @@ function translate (text = "", returnBack = false, varient = 0) {
             var last8 = rt[i][rt[i].length - 8] === undefined ? last7 : rt[i][rt[i].length - 8]
             var last9 = rt[i][rt[i].length - 9] === undefined ? last8 : rt[i][rt[i].length - 9]
             var endingHalf = rt[i].substring(Math.floor(rt[i].length/2))
-            var firstLast = varient == 0 ? last2 : varient == 1 ? last4 : varient == 2 ? last3 : varient == 3 ? last5 : varient == 4 ? last7 : "wu"
+            var firstLast = varient == 0 ? last2 : varient == 1 ? last4 : varient == 2 ? last3 : varient == 3 ? last5 : varient == 4 ? last7 : character[varient] + "u"
             rt[i] = `${firstLast}${endingHalf}`
             rt[i] = (rt[i])
             var vowels = ["a", "e", "i", "o", "u"]
@@ -134,7 +135,10 @@ const readline = require('readline').createInterface({
     output: process.stdout
 });
 
-readline.question('Input: ', name => {
-    console.log("Output: " + translate(name, true))
+readline.question('I: ', name => {
+    if (name.replace("***") != name) {
+        var varientL = (Math.abs((name.split("***")[1])) % 26) - 1
+    }
+    console.log("O: " + translate(name.split("***")[0], true, varientL))
     readline.close()
 })
