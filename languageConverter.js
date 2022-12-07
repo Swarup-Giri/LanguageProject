@@ -112,6 +112,10 @@ function translate (text = "", returnBack = false, varient = 0) {
                     }
                 }
             }
+            if (rt[i].join("").length < 3) {
+                var secondVowel = findFirstVowel(rt[i].join("")) == "a" ? "o" : findFirstVowel(rt[i].join("")) == "e" ? "i" : findFirstVowel(rt[i].join("")) == "i" ? "e" : findFirstVowel(rt[i].join("")) == "o" ? "a" : findFirstVowel(rt[i].join("")) == "u" ? "o" : "y"
+                rt[i][0] = rt[i][0] + secondVowel
+            }
             rt[i] = removeDuplicates(rt[i].join(""))
         }
     }
