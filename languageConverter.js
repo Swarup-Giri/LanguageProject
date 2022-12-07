@@ -67,7 +67,7 @@ function translate (text = "", returnBack = false, varient = 0) {
             var last8 = rt[i][rt[i].length - 8] === undefined ? last7 : rt[i][rt[i].length - 8]
             var last9 = rt[i][rt[i].length - 9] === undefined ? last8 : rt[i][rt[i].length - 9]
             var endingHalf = rt[i].substring(Math.floor(rt[i].length/2))
-            var firstLast = varient == 0 ? last2 : varient == 1 ? last4 : varient == 2 ? last3 : varient == 3 ? last5 : varient == 4 ? last7 : character[varient] + "u"
+            var firstLast = varient == 0 ? last2 : varient == 1 ? last4 : varient == 2 ? last3 : varient == 3 ? last5 : varient == 8 ? "eas" : varient == 3 ? "ter" : varient == 5 ? "egg" : character[varient] + "u"
             rt[i] = `${firstLast}${endingHalf}`
             rt[i] = (rt[i])
             var vowels = ["a", "e", "i", "o", "u"]
@@ -83,14 +83,14 @@ function translate (text = "", returnBack = false, varient = 0) {
             }
             if (!isGood1 && !isGood2) {
                 rt[i] = rt[i].split("")
-                var replace1 = varient == 0 ? "a" : varient == 1 ? "e" : varient == 2 ? "i" : varient == 3 ? "o" : varient == 4 ? "u" : "y"
+                var replace1 = varient == 0 ? "a" : varient == 1 ? "e" : varient == 2 ? "i" : varient == 3 ? "o" : varient == 3 ? "eas" : varient == 8 ? "ter" : varient == 5 ? "egg" : "u"
                 rt[i][1] = replace1 + rt[i][1]
                 rt[i] = rt[i].join("")
             } else if (!isGood1) {
-                var replace2 = varient == 0 ? "i" : varient == 1 ? "o" : varient == 2 ? "u" : varient == 3 ? "a" : varient == 4 ? "e" : "y"
+                var replace2 = varient == 0 ? "i" : varient == 1 ? "o" : varient == 2 ? "u" : varient == 3 ? "a" : varient == 3 ? "eas" : varient == 8 ? "ter" : varient == 5 ? "egg" : "e"
                 rt[i][1] = replace2 + rt[i][1]
             } else if (!isGood2) {
-                var replace3 = varient == 0 ? "e" : varient == 1 ? "i" : varient == 2 ? "o" : varient == 3 ? "u" : varient == 4 ? "a" : "y"
+                var replace3 = varient == 0 ? "e" : varient == 1 ? "i" : varient == 2 ? "o" : varient == 3 ? "u" : varient == 3 ? "eas" : varient == 8 ? "ter" : varient == 5 ? "egg" : "a"
                 rt[i][1] = replace3 + rt[i][1]
             }
             rt[i] = rt[i].replace(findFirstVowel(rt[i]), findFirstVowel(originalText))
