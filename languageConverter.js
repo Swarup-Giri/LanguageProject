@@ -1,5 +1,4 @@
-var beginnings = ["anti", "de", "dis", "em", "en", "force", "il", "im", "in", "inter", "ir", "mid", "mis", "non", "pre", "re", "un", "under"]
-var endings = ["able", "al", "ation", "ative", "ed", "en", "eous", "er", "es", "est", "ful", "ial", "ible", "ic", "ing", "ion", "ious", "ition", "itive", "ity", "ive", "less", "ly", "ment", "ness", "ous", "s", "tion", "y"]
+var beginnings = ["anti", "de", "dis", "em", "en", "im", "mid", "mis", "non", "pre", "under", "ation", "ative", "ed", "en", "eous", "est", "ial", "ible", "ing", "ious", "ition", "itive", "ity", "ive", "less", "ly", "ment", "ness", "ous", "tion"] // I know that all of these aren't necessarily word beginnings
 function isVowel(input = "") {
     if (input == "a" || input == "e" || input == "i" || input == "o" || input == "u") {
         return true
@@ -102,7 +101,7 @@ function translate (text = "", returnBack = false, varient = 0) {
             }
             rt[i] = rt[i].replace(findFirstVowel(rt[i]), findFirstVowel(originalText))
             if (rt[i].length <= Math.floor(originalText.length/2)) {
-                rt[i] = rt[i] //+ originalText[0]
+                rt[i] = rt[i]
             }
             if (!(rt[i] == originalText)) {
                 rt[i] = rt[i] + findFirstVowel(rt[i], false) + originalText[0].toLowerCase()
@@ -127,21 +126,18 @@ function translate (text = "", returnBack = false, varient = 0) {
             rt[i] = removeDuplicates(rt[i].join(""))
             var fv = findFirstVowel(rt[i])
             var lv = findFirstVowel(rt[i], false)
-            last2 = text.slice(-2)
-            last3 = text.slice(-3)
-            last5 = text.slice(-5)
-        }
-        rt[i] = rt[i].replaceAll("na", "ña").replaceAll("ne", "ñe").replaceAll("no", "ño")
-        for (var ii = 0; ii < beginnings.length - 1; ii++) {
-            if (originalText === beginnings[ii] || beginnings[ii] === undefined) { break }
-            if (originalText.replace(beginnings[ii] + "", "") !== originalText) {
-                if (originalText !== beginnings[ii]) {
-                    rt[i] = translate(beginnings[ii] + "", true) + rt[i]
-                    console.log(translate(beginnings[ii], true))
-                    rt[i].replace(rt[i], "hello")
+            for (var ii = 0; ii < beginnings.length - 1; ii++) {
+                if (originalText === beginnings[ii] || beginnings[ii] === undefined) { break }
+                if (originalText.replace(beginnings[ii] + "", "") !== originalText) {
+                    if (originalText !== beginnings[ii]) {
+                        rt[i] = translate(beginnings[ii] + "", true) + rt[i]
+                        rt[i].replace(rt[i], "hello")
+                    }
                 }
             }
         }
+        rt[i] = rt[i].replaceAll("na", "ña").replaceAll("ne", "ñe").replaceAll("no", "ño")
+        rt[i] = removeDuplicates(rt[i])
     }
     rt = rt.join(" ")
     rt = rt.replaceAll("ð", fv === "a" || fv === "e" ? "ð" + fv : "ða")
