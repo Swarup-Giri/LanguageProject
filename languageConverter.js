@@ -146,16 +146,3 @@ readline.question('I: ', name => {
     console.log("O: " + translate(name.split("***")[0], true, varientL))
     readline.close()
 })
-/**
- * Anything can be followed by vowels, y, h, r, or l
- * Any vowel, or y can be followed by anything
- * No consonant pairings unless the second consonant is h, r, or l, with exceptions being:
- *  sc
- *  sk
- *  sm
- *  sn
- *  sp
- *  st
- *  sw
- *  tw
- */
