@@ -1,3 +1,5 @@
+var beginnings = ["anti", "de", "dis", "em", "en", "force", "il", "im", "in", "inter", "ir", "mid", "mis", "non", "pre", "re", "un", "under"]
+var endings = ["able", "al", "ation", "ative", "ed", "en", "eous", "er", "es", "est", "ful", "ial", "ible", "ic", "ing", "ion", "ious", "ition", "itive", "ity", "ive", "less", "ly", "ment", "ness", "ous", "s", "tion", "y"]
 function isVowel(input = "") {
     if (input == "a" || input == "e" || input == "i" || input == "o" || input == "u") {
         return true
@@ -58,6 +60,10 @@ function translate (text = "", returnBack = false, varient = 0) {
         if (rt[i].length > 1) {
             var character = "abcdefghijklmnopqrstuvwxyz"
             var originalText = rt[i]
+            for (var ii = 0; ii < beginnings.length - 1; ii++) {
+                if (originalText === beginnings[ii] || beginnings[ii] === undefined) { break }
+                rt[i] = rt[i].replaceAll(beginnings[ii], "")
+            }
             var last1 = rt[i][rt[i].length - 1] === undefined ? "" : rt[i][rt[i].length - 1]
             var last2 = rt[i][rt[i].length - 2] === undefined ? last1 : rt[i][rt[i].length - 2]
             var last3 = rt[i][rt[i].length - 3] === undefined ? last2 : rt[i][rt[i].length - 3]
@@ -121,6 +127,20 @@ function translate (text = "", returnBack = false, varient = 0) {
             rt[i] = removeDuplicates(rt[i].join(""))
             var fv = findFirstVowel(rt[i])
             var lv = findFirstVowel(rt[i], false)
+            last2 = text.slice(-2)
+            last3 = text.slice(-3)
+            last5 = text.slice(-5)
+        }
+        rt[i] = rt[i].replaceAll("na", "ña").replaceAll("ne", "ñe").replaceAll("no", "ño")
+        for (var ii = 0; ii < beginnings.length - 1; ii++) {
+            if (originalText === beginnings[ii] || beginnings[ii] === undefined) { break }
+            if (originalText.replace(beginnings[ii] + "", "") !== originalText) {
+                if (originalText !== beginnings[ii]) {
+                    rt[i] = translate(beginnings[ii] + "", true) + rt[i]
+                    console.log(translate(beginnings[ii], true))
+                    rt[i].replace(rt[i], "hello")
+                }
+            }
         }
     }
     rt = rt.join(" ")
