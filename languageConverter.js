@@ -123,6 +123,9 @@ function translate (text = "", returnBack = false, varient = 0) {
                 var secondVowel = findFirstVowel(rt[i].join("")) == "a" ? "o" : findFirstVowel(rt[i].join("")) == "e" ? "i" : findFirstVowel(rt[i].join("")) == "i" ? "e" : findFirstVowel(rt[i].join("")) == "o" ? "a" : findFirstVowel(rt[i].join("")) == "u" ? "o" : "y"
                 rt[i][0] = rt[i][0] + secondVowel
             }
+            if (rt[i][0] === "ŋ") {
+                rt[i][0] = "g"
+            }
             rt[i] = removeDuplicates(rt[i].join(""))
             var fv = findFirstVowel(rt[i])
             var lv = findFirstVowel(rt[i], false)
@@ -138,13 +141,20 @@ function translate (text = "", returnBack = false, varient = 0) {
         }
         rt[i] = rt[i].replaceAll("na", "ña").replaceAll("ne", "ñe").replaceAll("no", "ño")
         rt[i] = removeDuplicates(rt[i])
+        var replacers = ["b", "d", "f", "g", "j", "m", "n", "p", "r", "t", "v", "x", "z"]
+        for (var iii = 0; iii < replacers.length - 1; iii++) {
+            rt[i] = rt[i].replaceAll("a" + replacers[iii], "aa"  + replacers[iii])
+            rt[i] = rt[i].replaceAll("e" + replacers[iii], "ee"  + replacers[iii])
+            rt[i] = rt[i].replaceAll("i" + replacers[iii], "ee"  + replacers[iii])
+            rt[i] = rt[i].replaceAll("o" + replacers[iii], "oo"  + replacers[iii])
+            rt[i] = rt[i].replaceAll("u" + replacers[iii], "oo"  + replacers[iii])
+        }
     }
     rt = rt.join(" ")
     rt = rt.replaceAll("ð", fv === "a" || fv === "e" ? "ð" + fv : "ða")
     rt = rt.replaceAll("þþ", "þ" + fv + "þ").replaceAll("þŋ", "þ" + fv + "ŋ").replaceAll("þȝ", "þ" + fv + "ȝ").replaceAll("þð", "þ" + fv + "ð").replaceAll("ŋþ", "ŋ" + fv + "þ").replaceAll("ŋŋ", "ŋ" + fv + "ŋ").replaceAll("ŋȝ", "ŋ" + fv + "ȝ").replaceAll("ŋð", "ŋ" + fv + "ð").replaceAll("ȝþ", "ȝ" + fv + "þ").replaceAll("ȝŋ", "ȝ" + fv + "ŋ").replaceAll("ȝȝ", "ȝ" + fv + "ȝ").replaceAll("ȝð", "ȝ" + fv + "ð").replaceAll("ðþ", "ð" + fv + "þ").replaceAll("ðŋ", "ð" + fv + "ŋ").replaceAll("ðȝ", "ð" + fv + "ȝ").replaceAll("ðð", "ð" + fv + "ð").replaceAll("þ", "th").replaceAll("ŋ", "ng").replaceAll("ȝ", "gh").replaceAll("ð", "qu")
-    rt = rt.replaceAll("undefined", "").replaceAll("ck", "ch").replaceAll("tch", "ch")
+    rt = rt/*.replaceAll("undefined", "")*/.replaceAll("ck", "ch").replaceAll("tch", "ch")
     for (var j = 0; j < replaceCharacters.length; j++) { rt = rt.replaceAll(" " + replaceCharacters[j] + " ", replaceCharacters[j]) }
-    
     if (returnBack) {
         return rt
     } 
