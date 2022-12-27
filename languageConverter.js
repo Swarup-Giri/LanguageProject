@@ -141,7 +141,7 @@ function translate (text = "", returnBack = false, varient = 0) {
         }
         rt[i] = rt[i].replaceAll("na", "ña").replaceAll("ne", "ñe").replaceAll("no", "ño")
         rt[i] = removeDuplicates(rt[i])
-        var replacers = ["b", "d", "f", "g", "j", "m", "n", "p", "r", "t", "v", "x", "z"]
+        var replacers = ["b", "f", "m", "t"]
         for (var iii = 0; iii < replacers.length - 1; iii++) {
             rt[i] = rt[i].replaceAll("a" + replacers[iii], "aa"  + replacers[iii])
             rt[i] = rt[i].replaceAll("e" + replacers[iii], "ee"  + replacers[iii])
