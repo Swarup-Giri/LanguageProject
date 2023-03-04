@@ -87,7 +87,7 @@ function fictionalLanguage(text) {
       result = result.toLowerCase();
     }
   
-    return result;
+    return result.toLowerCase();
   }
   
   function shuffle(array, random) {
@@ -97,5 +97,14 @@ function fictionalLanguage(text) {
     }
     return array;
   }
-  
-console.log(fictionalLanguage("who was the first president of the United States of America"))
+
+
+const readline = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+readline.question('I: ', name => {
+  console.log("O: " + fictionalLanguage(name))
+  readline.close()
+})
