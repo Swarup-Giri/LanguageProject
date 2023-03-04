@@ -1,9 +1,5 @@
-/*  Girian v2.6.5
-    GLP - Girian Pig Latin
-    GETOL - G.O.A.T. Eelealliam (Enill's) Tierra Oscura Lanuage
-    GOATETOL - Greatest Of All Time Eelealliam (Enill's) Tierra Oscura Lanuage
-    ***Note removeConsecutiveDuplicates() was "borrowed" from geeksforgeeks (I tried and failed to solve it on my own)
-    */
+/*  Ophidian v2.6.5
+*/
 function replace(value = "") {
             value = value.replaceAll("kc", "k").replaceAll("kc", "k")
             value = value.replaceAll("ck", "k").replaceAll("ck", "k")
