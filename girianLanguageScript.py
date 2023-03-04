@@ -141,11 +141,11 @@ def GETOLF(text = "", varient = "informal", type = "m", simlified = True):
         returnData = remove_consecutive_duplicates(returnData)
     returnData = returnData.replace("ak", "a")
     return returnData
-"""translateText = "hello, this is an example of girian text in this specific varient"
+translateText = "Emerald Of Everything"
 translate(translateText, varient["normal"])
 translate(translateText, varient["informal"])
 translate(translateText, varient["formal"])
 translate(translateText, varient["northern"])
 translate(translateText, varient["southern"])
 translate(translateText, varient["western"])
-translate(translateText, varient["old"])"""
+translate(translateText, varient["old"])

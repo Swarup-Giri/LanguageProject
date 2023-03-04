@@ -73,7 +73,7 @@ function format(text = "") {
     returnText = returnText.replaceAll(". ", " | ").replaceAll(", ", " || ").replaceAll("\n", " ").replaceAll("	", "")
     return returnText
 }
-function translate(text = "", varient = "informal", simplified = true, returnType = "translated", type="m") {
+function translate(text = "", returnType = "translated", varient = "informal", simplified = true, type="m") {
     text = format(text)
     if ((type != "m") & (type != "f")) {
         type = "m"
@@ -223,12 +223,15 @@ function GETOLF(theText = "", varient="informal", type="m", simplified = true) {
     }
     return [returnData, theText]
 }
-var translateText = `hello, this is an example of girian text in this specific varient .END`
-translate(translateText, varient.normal)
-translate(translateText, varient.informal)
-translate(translateText, varient.formal)
-translate(translateText, varient.northern)
-translate(translateText, varient.southern)
-translate(translateText, varient.eastern)
-translate(translateText, varient.western)
-translate(translateText, varient.old)
+var translateText = `Emerald Of Everything`
+
+
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+readline.question('', name => {
+    translate(name.split("***"))
+    readline.close()
+})
