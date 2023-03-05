@@ -1,5 +1,6 @@
 /*  Ophidian v2.6.5
 */
+var replaceCharacters = [".", ",", "<", ">", "?", "/", "\\", "-", "=", "_", "+", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "`", "~", "\"", "\'", "[", "]", "{", "}", ";", ":", "|"]
 function replace(value = "") {
             value = value.replaceAll("kc", "k").replaceAll("kc", "k")
             value = value.replaceAll("ck", "k").replaceAll("ck", "k")
@@ -37,8 +38,9 @@ function replace(value = "") {
             value = value.replaceAll("na", "no").replaceAll("na", "ñå")
             value = value.replaceAll("in", "în").replaceAll("in", "iñ")
             value = value.replaceAll("ni", "nî").replaceAll("ni", "ñi")
-            value = value.replaceAll("nu", "ny").replaceAll("nu", "ny")
+            value = value.replaceAll("nu", "ny").replaceAll("nu", "ñ")
             value = value.replaceAll("un", "yn").replaceAll("un", "yn")
+            value = value.replaceAll("ny", "ñ").replaceAll("ny", "ñ")
             value = value.replaceAll("e ", "é ").replaceAll("e || ", "é || ").replaceAll("e | ", "é | ")
             value = value.replaceAll("'", "")
             return value
@@ -67,6 +69,7 @@ function format(text = "") {
     returnText = returnText.replaceAll("\n", " ")
     returnText = returnText.replaceAll("? ", ". ").replaceAll("! ", ". ")
     returnText = returnText.replaceAll(". ", " | ").replaceAll(", ", " || ").replaceAll("\n", " ").replaceAll("	", "")
+    
     return returnText
 }
 function translate(text = "", returnType = "translated", varient = "informal", simplified = true, type="m") {
