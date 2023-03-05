@@ -2,7 +2,7 @@
 */
 var replaceCharacters = [".", ",", "<", ">", "?", "/", "\\", "-", "=", "_", "+", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "`", "~", "\"", "\'", "[", "]", "{", "}", ";", ":", "|"]
 function replace(value = "") {
-            value = value.replaceAll("kc", "k").replaceAll("kc", "k")
+            value = value.replaceAll("kc", "k").replaceAll("kc", "k").replaceAll("undefined", "")
             value = value.replaceAll("ck", "k").replaceAll("ck", "k")
             value = value.replaceAll("wh", "w").replaceAll("wh", "w")
             value = value.replaceAll("hw", "h").replaceAll("hw", "h")
@@ -201,12 +201,12 @@ function GETOLF(theText = "", varient="informal", type="m", simplified = true) {
             if (varient === "informal") {
                 text = removeConsecutiveDuplicates(text)
             }
-            returnData[i] = replace(returnData[i])
+            returnData[i] = replace(returnData[i].replaceAll("undefined", "e"))
         } else if (returnData[i][0] == ".") {
             returnData[i] = returnData[i].replace(".", "\"")
             returnData[i] = returnData[i] + "\""
         } else if (varient > 100) {
-            returnData[i] = replace(returnData[i])
+            returnData[i] = replace(returnData[i].replaceAll("undefined", "e"))
             
             if (returnData[i][returnData[i].length - 1] == "ñ") {
                 returnData[i] = returnData[i].split("")
@@ -220,7 +220,7 @@ function GETOLF(theText = "", varient="informal", type="m", simplified = true) {
     if (varient > 100) {
         returnData = removeConsecutiveDuplicates(returnData)
     }
-    returnData = returnData.replaceAll("þ", "th").replaceAll("ŋ", "ng")
+    returnData = returnData.replaceAll("þ", "th").replaceAll("ŋ", "ng").replaceAll("yndefîned", "e")
     return [returnData, theText]
 }
 var translateText = `Emerald Of Everything`

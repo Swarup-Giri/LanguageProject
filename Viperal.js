@@ -70,10 +70,13 @@ function removeDuplicates(input = "", value = 1) {
 }
 function format(input = "") {
     input = input.replaceAll("ch", "þ")
-    s = ["e", "i", "y"]
+    var s = ["e", "i", "y"]
+    input = input.replaceAll("cie", "cee")
     for (var i in s) {
         input = input.replaceAll("c" + s[i], "s" + s[i])
+        input = input.replaceAll("g" + s[i], "j" + s[i])
     }
+    input = input.replaceAll("tt", "d").replaceAll("tion", "shun")
     input = input.replaceAll("c", "k").replaceAll("þ", "ch")
     return input
 }
