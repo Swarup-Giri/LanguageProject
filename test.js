@@ -153,10 +153,10 @@ const readline = require('readline').createInterface({
     output: process.stdout
 });
 
-readline.question('I: ', name => {
+readline.question('', name => {
     if (name.replace("***") != name) {
         var varientL = (Math.abs((name.split("***")[1])) % 26) - 1
     }
-    console.log("O: " + translate(name.split("***")[0], true, varientL))
+    console.log("" + translate(name.split("***")[0], true, varientL))
     readline.close()
 })
