@@ -104,7 +104,7 @@ const readline = require('readline').createInterface({
   output: process.stdout
 });
 
-readline.question('I: ', name => {
-  console.log("O: " + fictionalLanguage(name))
+readline.question('', name => {
+  console.log(fictionalLanguage(name))
   readline.close()
 })
