@@ -26,7 +26,7 @@ function replace(value = "") {
             value = value.replaceAll("ec", "eç").replaceAll("ec", "eç")
             value = value.replaceAll("ce", "çe").replaceAll("ce", "çe")
             value = value.replaceAll("ic", "is").replaceAll("ic", "iç")
-            value = value.replaceAll("ci", "ce").replaceAll("ci", "çi")
+            value = value.replaceAll("ci", "ce").replaceAll("ci", "çi").replaceAll(("ce", "çe"))
             value = value.replaceAll("uc", "iç").replaceAll("uc", "iç")
             value = value.replaceAll("cu", "su").replaceAll("cu", "çu")
             value = value.replaceAll("ng", "ŋ").replaceAll("ng", "ŋ") // we don't use this anymore
@@ -217,6 +217,7 @@ function GETOLF(theText = "", varient="informal", type="m", simplified = true) {
     if (varient > 100) {
         returnData = removeConsecutiveDuplicates(returnData)
     }
+    returnData = returnData.replaceAll("þ", "th").replaceAll("ŋ", "ng")
     return [returnData, theText]
 }
 var translateText = `Emerald Of Everything`
