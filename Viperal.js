@@ -144,7 +144,9 @@ function translate(input = "", giveBack = false) {
     input = input.join(" ")
 
     for (var j = 0; j < replaceCharacters.length; j++) { input = input.replaceAll(" " + replaceCharacters[j] + " ", replaceCharacters[j]) }
-    
+    input = input.replaceAll("inging", "ť")
+    input = input.replaceAll("ing", "in").replaceAll("ng", "n")
+    input = input.replaceAll("ť", "ingin")
     if (giveBack) {
         return input
     }
