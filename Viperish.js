@@ -50,8 +50,8 @@ function translateIndividual(text = "", rv = 0) {
     returnText[1] = minusTwo
     returnText = returnText.join("").replaceAll(",")
     var firstLetter = rv == 0 ? minusFour : rv == 1 ? minusFive : rv == 2 ? minusThree : rv == 3 ? minusOne : rv == 4 ? minusSix : rv == 5 ? minusEight : rv == 6 ? minusSeven : minusNine
-    var firstVowel = rv == 0 ? "a" : rv == 1 ? "e" : rv == 2 ? "i" : rv == 3 ? "o" : rv == 4 ? "u" : rv == 5 ? "a" : rv == 6 ? "e" : "wu"
-    returnText = `${firstLetter}${firstVowel}${returnText}${minusTwoV2}`
+    var firstVowel = rv == 0 ? `a${minusFour}'`  : rv == 1 ? `e${minusTwo}i` : rv == 2 ? `i${firstLetter}${firstVowel}'` : rv == 3 ? "o'" : rv == 4 ? "u'" : rv == 5 ? "a" : rv == 6 ? "e'" : "ew'u'"
+    returnText = `${firstLetter}${firstVowel}'${returnText}'${minusTwoV2}`
     return rCD(change(returnText))
 }
 function change(returnText = "") {
@@ -96,6 +96,10 @@ function change(returnText = "") {
     returnText = returnText.replaceAll("ki", "khi")
     returnText = returnText.replaceAll("ko", "kho")
     returnText = returnText.replaceAll("dr", "dur")
+    returnText = returnText.replaceAll("gn", "n")
+    returnText = returnText.replaceAll("kn", "n")
+    returnText = returnText.replaceAll("hl", "hil")
+    returnText = returnText.replaceAll("nk", "nik")
     return returnText
 }
 /******************************************
@@ -109,11 +113,20 @@ function change(returnText = "") {
  7 aela ahia sis'n emple fof'aometina aia'aueua aha'auika arowa aoa'aumpa avea aha'aza aoa'aela aha'aoa aia'ahea aha'aoa ahea ekie oto'auma avea aha'aenka aftea aha'auika arowa aoa'aumpea avea aha'aza aoa'ahika a'aha aoa'h ahea ekie oto'auma avea aha'aenka
  ******************************************/
 var text = "Emerald Of Everything"
-translate(text, 0) // good
+/*translate(text, 0) // good
 translate(text, 1)
 translate(text, 2) // good
 translate(text, 3) // good
 translate(text, 4)
 translate(text, 5)
 translate(text, 6)
-translate(text, 7)
+translate(text, 7)*/
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+readline.question('', name => {
+    translate(name, 0)
+    readline.close()
+})
