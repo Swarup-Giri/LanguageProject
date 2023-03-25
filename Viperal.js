@@ -147,12 +147,13 @@ function translate(input = "", giveBack = false) {
     input = input.replaceAll("inging", "ť")
     input = input.replaceAll("ing", "in").replaceAll("ng", "n")
     input = input.replaceAll("ť", "ingin")
+    input = "Viperal: " + input
     if (giveBack) {
         return input
     }
     console.log(input)
 }
-
+/*
 const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
@@ -164,4 +165,5 @@ readline.question('', name => {
     }
     console.log("" + translate(name.split("***")[0], true, varientL))
     readline.close()
-})
+})*/
+module.exports = {translate}

@@ -83,7 +83,7 @@ function translate(text = "", returnType = "translated", varient = "informal", s
         text = text.replaceAll("  ", " ").replaceAll("  ", " ").replaceAll("  ", " ")
     }
     returnType = returnType === "translated" ? 0 : returnType === "original" ? 1 : 0
-    console.log(GETOLF(text, varient, type, simplified)[returnType])
+    console.log("The Old Tongue: " + GETOLF(text, varient, type, simplified)[returnType])
 }
 function GETOL(textString = "", type="m") {
     var returnText = textString.toLowerCase()
@@ -225,7 +225,7 @@ function GETOLF(theText = "", varient="informal", type="m", simplified = true) {
 }
 var translateText = `Emerald Of Everything`
 
-
+/*
 const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
@@ -234,4 +234,5 @@ const readline = require('readline').createInterface({
 readline.question('', name => {
     translate(name.split("***"), "translated", "old")
     readline.close()
-})
+})*/
+module.exports = {translate}

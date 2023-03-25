@@ -19,7 +19,7 @@ function translate(text = "", regionalVarient = 0, joiningThreshold = 3, returnT
     }
     returnText = returnText.join(" ").replaceAll(" . ", ".").replaceAll(" , ", ",").replaceAll(" ! ", "!").replaceAll(" ? ", "?").replaceAll(" : ", ":").replaceAll(" ; ", ";").replaceAll(" \" ", "\"").replaceAll(" \' ", "\'").replaceAll("  ", " ").replaceAll("  ", " ").replaceAll(" 0 ", "0").replaceAll(" 1 ", "1").replaceAll(" 2 ", "2").replaceAll(" 3 ", "3").replaceAll(" 4 ", "4").replaceAll(" 5 ", "5").replaceAll(" 6 ", "6").replaceAll(" 7 ", "7").replaceAll(" 8 ", "8").replaceAll(" 9 ", "9").replaceAll(" \\ ", "\\").replaceAll(" / ", "/").replaceAll(" < ", "<").replaceAll(" > ", ">")
     returnText = change(returnText)
-    if (returnType) { return returnText } console.log(returnText)
+    if (returnType) { return returnText } console.log("Viperish: " + returnText)
 }
 function translateIndividual(text = "", rv = 0) {
     var returnText = text
@@ -120,7 +120,7 @@ translate(text, 3) // good
 translate(text, 4)
 translate(text, 5)
 translate(text, 6)
-translate(text, 7)*/
+translate(text, 7)
 const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
@@ -129,4 +129,5 @@ const readline = require('readline').createInterface({
 readline.question('', name => {
     translate(name, 0)
     readline.close()
-})
+})*/
+module.exports = {translate}

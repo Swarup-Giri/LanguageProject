@@ -97,7 +97,7 @@ function fictionalLanguage(text) {
     }
     return array;
   }
-
+/*
 
 const readline = require('readline').createInterface({
   input: process.stdin,
@@ -107,4 +107,5 @@ const readline = require('readline').createInterface({
 readline.question('', name => {
   console.log(fictionalLanguage(name))
   readline.close()
-})
+})*/
+module.exports = {fictionalLanguage}
