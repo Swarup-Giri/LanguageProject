@@ -52,7 +52,7 @@ const varient = {
     eastern: "eastern",
     western: "western",
     old: "old",
-    rude: "rude" // Dropping support later
+    rude: "rude"
 }
 function removeConsecutiveDuplicates(input) {
         if(input.length<=1)
