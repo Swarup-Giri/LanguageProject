@@ -1,11 +1,3 @@
-/*const OT = require("./TheOldTongue")
-const OO = require("./OldOphidian")
-const OP = require("./Ophidian")
-const VO = require("./Viperosian")
-const VA = require("./Viperal")
-const VI = require("./Viperish")
-const SS = require("./Ssyrinthonic")
-*/
 import * as TOT from "./TheOldTongue.js"
 import * as OOP from "./OldOphidian.js"
 import * as OPH from "./Ophidian.js"
@@ -14,14 +6,6 @@ import * as VIA from "./Viperal.js"
 import * as VII from "./Viperish.js"
 import * as SSY from "./Ssyrinthonic.js"
 import * as ReadLine from "readline"
-/*TOT.translate("hello worlldldlfld")
-OOP.translate("hello worlldldlfld")
-OPH.translate("hello worlldldlfld")
-VIO.translate("hello worlldldlfld")
-VIA.translate("hello worlldldlfld")
-VII.translate("hello worlldldlfld")
-SSY.fictionalLanguage("hello worlldldlfld")
-*/
 
 const readline = ReadLine.createInterface({
     input: process.stdin,
