@@ -20,7 +20,7 @@ readline.question('English: ', name => {
     console.log("")
     OPH.translate(name.split("***"))
     console.log("")
-    console.log("" + VIO.translate(name.split("***")[0], true, VIO.varientL))
+    console.log("Viperosian: " + VIO.translate(name.split("***")[0], true, VIO.varientL))
     console.log("")
     console.log("" + VIA.translate(name.split("***")[0], true, VIA.varientL))
     console.log("")
