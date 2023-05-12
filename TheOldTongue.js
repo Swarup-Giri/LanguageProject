@@ -218,7 +218,7 @@ function GETOLF(theText = "", varient="informal", type="m", simplified = true) {
     if (varient > 100) {
         returnData = removeConsecutiveDuplicates(returnData)
     }
-    returnData = returnData.replaceAll("þ", "th").replaceAll("ŋ", "ng").replaceAll("yndefîned", "e")
+    returnData = returnData.replaceAll("yndefîned", "e")
     return [returnData, theText]
 }
 var translateText = `Emerald Of Everything`
