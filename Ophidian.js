@@ -213,12 +213,35 @@ function GETOLF(theText = "", varient="informal", type="m", simplified = true) {
             }
         }
         returnData[i][0] = returnData[i][0].replace(returnData[i][0], returnData[i][0].toUpperCase())
+        if (returnData[i][0] === "x") {
+            returnData[i] = returnData[i].replace("x", "dz")
+        }
+        returnData[i] = returnData[i].replaceAll("x", "eksé")
+        returnData[i] = returnData[i].replaceAll("re", "ré")
+        returnData[i] = returnData[i].replaceAll("ra", "rà")
+        returnData[i] = returnData[i].replaceAll("ri", "rí")
+        var firsts = ['b', 'r', 't', 'j', 'm', 'w', 'l']
+        for (var r = 0; r < firsts.length; r++) {
+            returnData[i] = returnData[i].replaceAll(firsts[r] + "e", firsts[r] + "é")
+            returnData[i] = returnData[i].replaceAll(firsts[r] + "a", firsts[r] + "à")
+            returnData[i] = returnData[i].replaceAll(firsts[r] + "i", firsts[r] + "í")
+        }
+        var seconds = ['v', 'p', 'd', 'k', 'h']
+        for (var j = 0; j < seconds.length; j++) {
+            returnData[i] = returnData[i].replaceAll(seconds[j] + "u", seconds[j] + "ù")
+            returnData[i] = returnData[i].replaceAll(seconds[j] + "o", seconds[j] + "ò")
+            returnData[i] = returnData[i].replaceAll(seconds[j] + "y", seconds[j] + "ō")
+        }
+        var thirds = ['r', 'd', 'f', 'j']
+        for (var q = 0; q < thirds.length; q++) {
+            returnData[i][returnData[i].length - 1] === thirds[q] ? returnData[i][returnData[i].length - 1] = returnData[i][returnData[i].length - 1] + "ē" : returnData[i][returnData[i].length - 1] = returnData[i][returnData[i].length - 1]
+        }
     }
     returnData = returnData.join().replaceAll(",", " ").replaceAll(" || ", ", ").replaceAll(" |", "| ").replaceAll("  ", " ").replaceAll("  ", " ")
     if (varient > 100) {
         returnData = removeConsecutiveDuplicates(returnData)
     }
-    returnData = returnData.replaceAll("yndefîned", "ki")
+    returnData = returnData.replaceAll("þ", "th").replaceAll("ŋ", "ng").replaceAll("yndefîned", "ki")
     return [returnData, theText]
 }
 var translateText = `Emerald Of Everything`
