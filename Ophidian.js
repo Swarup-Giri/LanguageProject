@@ -81,6 +81,7 @@ function translate(text = "", returnType = "translated", varient = "informal", s
         text = text.replaceAll("  ", " ").replaceAll("  ", " ").replaceAll("  ", " ")
     }
     returnType = returnType === "translated" ? 0 : returnType === "original" ? 1 : 0
+    if (returnType === 1) {return GETOLF(text, varient, type, simplified)[0]}
     console.log("Ophidian: " +GETOLF(text, varient, type, simplified)[returnType])
 }
 function GETOL(textString = "", type="m") {

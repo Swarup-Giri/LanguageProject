@@ -5,6 +5,7 @@ import * as VIO from "./Viperosian.js"
 import * as VIA from "./Viperal.js"
 import * as VII from "./Viperish.js"
 import * as SSY from "./Ssyrinthonic.js"
+import * as ARC from "./Arcanith.js"
 import * as ReadLine from "readline"
 
 const readline = ReadLine.createInterface({
@@ -35,9 +36,13 @@ readline.question('English: ', name => {
     console.log("")
     OPH.translate(name.split("***"))
     console.log("")
+    console.log("Northern Arcanith: " + ARC.translate(VIA.translate(OPH.translate(name.split("***"), 'original').split("***")[0], true, VIA.varientL)))
+    console.log("")
+    console.log("Southern Arcanith: " + ARC.translate(OPH.translate(VIA.translate(name.split("***")[0], true, VIA.varientL).split("***"), 'original')))
+    console.log("")
     console.log("Viperosian: " + VIO.translate(name.split("***")[0], true, VIO.varientL))
     console.log("")
-    console.log("" + VIA.translate(name.split("***")[0], true, VIA.varientL))
+    console.log("Viperal: " + VIA.translate(name.split("***")[0], true, VIA.varientL))
     console.log("")
     VII.translate(name, 0)
     console.log("")

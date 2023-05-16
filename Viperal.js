@@ -147,7 +147,6 @@ function translate(input = "", giveBack = false) {
     input = input.replaceAll("inging", "ť")
     input = input.replaceAll("ing", "in").replaceAll("ng", "n")
     input = input.replaceAll("ť", "ingin")
-    input = "Viperal: " + input
     if (giveBack) {
         return input
     }
