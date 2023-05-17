@@ -38,7 +38,7 @@ readline.question('English: ', name => {
     console.log("")
     console.log("Arcanith: " + ARC.translate(VIA.translate(OPH.translate(name.split("***"), 'original').split("***")[0], true, VIA.varientL)))
     console.log("")
-    console.log("Western Arcanith: " + ARC.translate(OPH.translate(VIA.translate(name.split("***")[0], true, VIA.varientL).split("***"), 'original')))
+    console.log("Barclith: " + ARC.translate(OPH.translate(VIA.translate(name.split("***")[0], true, VIA.varientL).split("***"), 'original')))
     console.log("")
     console.log("Old Viperosian: " + VIO.translate(VIO.translate(name.split("***")[0], true, VIO.varientL).split("***")[0], true, VIO.varientL))
     console.log("")
