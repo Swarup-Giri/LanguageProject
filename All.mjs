@@ -40,6 +40,8 @@ readline.question('English: ', name => {
     console.log("")
     console.log("Southern Arcanith: " + ARC.translate(OPH.translate(VIA.translate(name.split("***")[0], true, VIA.varientL).split("***"), 'original')))
     console.log("")
+    console.log("Old Viperosian: " + VIO.translate(VIO.translate(name.split("***")[0], true, VIO.varientL).split("***")[0], true, VIO.varientL))
+    console.log("")
     console.log("Viperosian: " + VIO.translate(name.split("***")[0], true, VIO.varientL))
     console.log("")
     console.log("Viperal: " + VIA.translate(name.split("***")[0], true, VIA.varientL))
