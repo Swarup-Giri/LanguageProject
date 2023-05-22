@@ -215,7 +215,7 @@ function GETOLF(theText = "", varient="informal", type="m", simplified = true) {
         }
         returnData[i][0] = returnData[i][0].replace(returnData[i][0], returnData[i][0].toUpperCase())
         if (returnData[i][0] === "x") {
-            returnData[i] = returnData[i].replace("x", "dz")
+            returnData[i] = returnData[i].replace("x", "sh")
         }
         returnData[i] = returnData[i].replaceAll("x", "eksé")
         returnData[i] = returnData[i].replaceAll("re", "ré")
